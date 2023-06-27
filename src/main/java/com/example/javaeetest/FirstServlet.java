@@ -1,5 +1,7 @@
 package com.example.javaeetest;
 
+import logic.Cart;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -14,29 +16,39 @@ public class FirstServlet  extends javax.servlet.http.HttpServlet  {
 
     @Override
     protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, IOException {
-
         HttpSession session = req.getSession();
 
-        Integer count = (Integer)session.getAttribute("count");
+        String user = (String)session.getAttribute("current_user");
 
-        if(count == null){
-            session.setAttribute("count", 1);
-        } else{
-            session.setAttribute("count", count + 1);
+        if(user == null){
+            // response для анонимного полььзователя
+            // авторизация
+            // регистрация
+            // session.setAttrubute("current_user", ID);
+        } else {
+            // response для авторизоывнного пользователя
         }
+//        Cart cart = (Cart) session.getAttribute("cart");
+//
+//        String name = req.getParameter("name");
+//        int quantity = Integer.parseInt(req.getParameter("quantity"));
+//
+//
+//        if(cart == null){
+//            cart = new Cart();
+//            cart.setName(name);
+//            cart.setQuantity(quantity);
+//        }
+//
+//        session.setAttribute("cart", cart);
+//
+//        PrintWriter wr = resp.getWriter();
+//
+//        wr.println("<html>");
+//        wr.println("<h1> Your count is " +  + "</h1>");
+//        wr.println("</html>");
 
-
-       String name = req.getParameter("name");
-       String surname = req.getParameter("surname");
-
-        PrintWriter wr = resp.getWriter();
-        wr.println("<html>");
-        wr.println("<h1> Hello, " + name + " " + surname + "</h1>");
-        wr.println("</html>");
-
-        //resp.sendRedirect("/firstJSP.jsp");
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/firstJSP.jsp");
-        dispatcher.forward(req,resp);
+        getServletContext().getRequestDispatcher("/showCart.jsp").forward(req,resp);
     }
 
 }
