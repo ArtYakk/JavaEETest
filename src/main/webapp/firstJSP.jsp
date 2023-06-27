@@ -15,11 +15,12 @@
 <h1>Testing JSP</h1>
 <br>
 <p>
-   <%
-       for(int i=0; i<10; i++){
-           out.println("<p>" + "Hello, " + i + "</p>");
-       }
-
+    <%@ page import="java.util.Date, logic.TestClass" %>
+    <%
+        TestClass testClass = new TestClass();
+    %>
+   <%=
+      testClass.getInfo()
    %>
 </p>
 
