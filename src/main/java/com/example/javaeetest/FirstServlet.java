@@ -1,6 +1,7 @@
 package com.example.javaeetest;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -13,6 +14,18 @@ public class FirstServlet  extends javax.servlet.http.HttpServlet  {
 
     @Override
     protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, IOException {
+
+        HttpSession session = req.getSession();
+
+        Integer count = (Integer)session.getAttribute("count");
+
+        if(count == null){
+            session.setAttribute("count", 1);
+        } else{
+            session.setAttribute("count", count + 1);
+        }
+
+
        String name = req.getParameter("name");
        String surname = req.getParameter("surname");
 
