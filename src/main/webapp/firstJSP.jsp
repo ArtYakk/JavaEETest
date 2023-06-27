@@ -8,21 +8,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>First JSP</title>
 </head>
+
 <body>
-<h1>Testing JSP</h1>
-<br>
-<p>
-    <%@ page import="java.util.Date, logic.TestClass" %>
-    <%
-        TestClass testClass = new TestClass();
-    %>
-   <%=
-      testClass.getInfo()
-   %>
-</p>
+    <h1>Testing JSP</h1>
+    <p>
+        <%
+            String name = request.getParameter("name");
+            String surname = request.getParameter("surname");
+        %>
+        <%=
+        "Hello, " + name + " " + surname
+        %>
+    </p>
 
 </body>
+
 </html>
