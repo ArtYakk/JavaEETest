@@ -48,4 +48,14 @@
         <servlet-name>DeleteCookiesServlet</servlet-name>
         <url-pattern>/delete-cookies</url-pattern>
     </servlet-mapping>
+
+    <!-- JDBC -->
+    <servlet>
+        <servlet-name>LibraryServlet</servlet-name>
+        <servlet-class>jdbc.LibraryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LibraryServlet</servlet-name>
+        <url-pattern>/library</url-pattern>
+    </servlet-mapping>
 </web-app>
